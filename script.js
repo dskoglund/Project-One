@@ -1,6 +1,8 @@
 var user = document.getElementById("username")
 var friends= document.getElementById("friends")
+
 var userPost = [{
+
   "name": "Matthew Cole",
   "post": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
 }, {
