@@ -1,0 +1,16 @@
+.navbar{
+  background-color: #3b5998;
+  color: white;
+  height: 3px;
+}
+
+#mainsearch {
+  position: relative;
+  border-radius: 2px;
+  background-color: white;
+  border: none;
+  width: 400px;
+  margin-left: 100px;
+  margin-top: 10px;
+
+}
