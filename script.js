@@ -1,3 +1,4 @@
+var currentUser = 1;
 var people = [
   {
     id: 1,
@@ -69,39 +70,58 @@ var people = [
     image: "friend.jpg",
     friends: []
   }
-]
+];
 
 var possibleFriends = document.getElementById('possible-friends');
+var currentFriends = document.getElementById('current-friends');
 
 for (var i = 0; i < people.length; i++) {
-    var friend = document.createElement('div');
-    friend.classList.add('friend');
-    var row = document.createElement('div');
-    row.classList.add('row');
-    var image = document.createElement('img');
-    image.classList.add('col-md-2');
-    image.classList.add('img-responsive');
-    image.setAttribute('src', people[i].image);
-
-    var details = document.createElement('div');
-    details.classList.add('col-md-10');
-
-    var friendName = document.createElement('p');
-    friendName.textContent = people[i].name;
-
-    var address = document.createElement('p');
-    address.textContent = people[i].location;
-
-    var divider = document.createElement('hr');
-
-    friend.appendChild(row);
-    friend.appendChild(divider);
-
-    details.appendChild(friendName);
-    details.appendChild(address);
-
-    row.appendChild(image);
-    row.appendChild(details);
-
-    possibleFriends.appendChild(friend);
+  var friend = makeFriend(people[i]);
+  possibleFriends.appendChild(friend);
 }
+
+for (var i = 0; i < people.length; i++) {
+  if (people[i].id == currentUser) {
+    for (var k = 0; k < people[i].friends.length; k++) {
+      for (var j = 0; j < people.length; j++) {
+        if (people[j].id == people[i].friends[k]) {
+          var friend = makeFriend(people[j]);
+          currentFriends.appendChild(friend);
+        }
+      }
+    }
+  }
+}
+
+function makeFriend(person) {
+  var friend = document.createElement('div');
+  friend.classList.add('friend');
+  var row = document.createElement('div');
+  row.classList.add('row');
+  var image = document.createElement('img');
+  image.classList.add('col-md-2');
+  image.classList.add('img-responsive');
+  image.setAttribute('src', person.image);
+
+  var details = document.createElement('div');
+  details.classList.add('col-md-10');
+
+  var friendName = document.createElement('p');
+  friendName.textContent = person.name;
+
+  var address = document.createElement('p');
+  address.textContent = person.location;
+
+  var divider = document.createElement('hr');
+
+  friend.appendChild(row);
+  friend.appendChild(divider);
+
+  details.appendChild(friendName);
+  details.appendChild(address);
+
+  row.appendChild(image);
+  row.appendChild(details);
+
+  return friend;
+};
