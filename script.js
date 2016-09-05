@@ -80,15 +80,18 @@ for (var i = 0; i < people.length; i++) {
   possibleFriends.appendChild(friend);
 }
 
-for (var i = 0; i < people.length; i++) {
-  if (people[i].id == currentUser) {
-    for (var k = 0; k < people[i].friends.length; k++) {
-      for (var j = 0; j < people.length; j++) {
-        if (people[j].id == people[i].friends[k]) {
-          var friend = makeFriend(people[j]);
-          currentFriends.appendChild(friend);
-        }
-      }
+var user = person(currentUser);
+
+for (var k = 0; k < user.friends.length; k++) {
+  var friend = person(user.friends[k]);
+  var theFriend = makeFriend(friend);
+  currentFriends.appendChild(theFriend);
+}
+
+function person(id) {
+  for (var i = 0; i < people.length; i++) {
+    if (people[i].id == id) {
+      return people[i]
     }
   }
 }
