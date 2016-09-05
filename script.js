@@ -95,6 +95,13 @@ function person(id) {
     }
   }
 }
+var possibleFriends = document.getElementById('possible-friends');
+possibleFriends.addEventListener('click', function (theEvent) {
+  var id = theEvent.target.getAttribute('data-id');
+  if (id) {
+    user.friends.push(id);
+  }
+});
 
 function makeFriend(person) {
   var friend = document.createElement('div');
@@ -106,8 +113,19 @@ function makeFriend(person) {
   image.classList.add('img-responsive');
   image.setAttribute('src', person.image);
 
+  var buttonGroup = document.createElement('div');
+  buttonGroup.classList.add('btn-group');
+  buttonGroup.classList.add('col-md-2');
+
+  var button = document.createElement('button');
+  button.textContent = "Add Friend";
+  button.setAttribute('data-id', person.id);
+  button.classList.add('btn');
+  button.classList.add('btn-primary');
+  button.classList.add('col-md-2');
+
   var details = document.createElement('div');
-  details.classList.add('col-md-10');
+  details.classList.add('col-md-7');
 
   var friendName = document.createElement('p');
   friendName.textContent = person.name;
@@ -125,6 +143,6 @@ function makeFriend(person) {
 
   row.appendChild(image);
   row.appendChild(details);
-
+  row.appendChild(button);
   return friend;
 };
