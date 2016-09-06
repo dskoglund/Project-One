@@ -10,8 +10,26 @@
 <body>
   <div class="container">
     <div class="row">
-
-      <div class="col-md-6">
+      <div class="col-md-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="form-group">
+              <label for="">Search</label>
+              <input id="term" class="form-control" type="text">
+            </div>
+            <button id="search" type="button" class="btn btn-default">Go</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div id="results" class="col-md-12">
+      </div>
+    </div>
+  </div> 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
         <div id="people" class="">
           <h2>People you may know:</h2>
           <div>
@@ -22,7 +40,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-5">
         <div id="friends">
           <h2>Current Friends</h2>
           <div class="panel panel-default">

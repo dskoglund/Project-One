@@ -76,6 +76,61 @@ var possibleFriends = document.getElementById('possible-friends');
 var currentFriends = document.getElementById('current-friends');
 var user = person(currentUser);
 
+var search= document.getElementById('search');
+search.addEventListener('click',function(){
+  var term = document.getElementById('term');
+  var word = term.value;
+  var matches = relevant(word, people)
+  var results = document.getElementById('results');
+  clears(results);
+
+  for (var i = 0; i < matches.length; i++) {
+    results.appendChild(people(matches[i]));
+  }
+
+});
+
+function relevant(word, people) {
+  var matches = [];
+
+  for (var i = 0; i < people.length; i++) {
+    var relevance = 0;
+    for (var text in people[i]) {
+      if (people[i][text].indexOf(word) !== -1) {
+        relevance = relevance + 1;
+      }
+    }
+    if (relevance > 0){
+      var match = [people[i],relevance];
+      matches.push(match);
+    }
+  }
+  return matches;
+}
+
+function people(data){
+  var result = document.getElementById('results')
+  var people= document.createElement('div');
+  var name = document.createElement('h2');
+  var description = document.createElement('p');
+  name.textContent = data.name;
+  description.textContent = data.name;
+  people.appendChild(name);
+  people.appendChild(description);
+  result.appendChild(people);
+
+  return people;
+
+}
+
+function clears(target){
+  while(target.firstChild){
+    target.removeChild(target.firstChild);
+  }
+}
+
+
+
 function drawPeople() {
   for (var i = 0; i < people.length; i++) {
     var friend = makeFriend(people[i]);
