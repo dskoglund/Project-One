@@ -85,7 +85,7 @@ search.addEventListener('click',function(){
   clears(results);
 
   for (var i = 0; i < matches.length; i++) {
-    results.appendChild(people(matches[i]));
+    results.appendChild(searchResult(matches[i]));
   }
 
 });
@@ -95,20 +95,18 @@ function relevant(word, people) {
 
   for (var i = 0; i < people.length; i++) {
     var relevance = 0;
-    for (var text in people[i]) {
-      if (people[i][text].indexOf(word) !== -1) {
-        relevance = relevance + 1;
-      }
-    }
-    if (relevance > 0){
-      var match = [people[i],relevance];
-      matches.push(match);
+    var person = people[i];
+    var name = person.name;
+    if(name.toUpperCase().indexOf(word.toUpperCase()) !== -1){
+      matches.push(person);
     }
   }
+
+
   return matches;
 }
 
-function people(data){
+function searchResult(data){
   var result = document.getElementById('results')
   var people= document.createElement('div');
   var name = document.createElement('h2');
@@ -135,12 +133,8 @@ function drawPeople() {
   for (var i = 0; i < people.length; i++) {
     var friend = makeFriend(people[i]);
 
-    console.log(people[i].name);
-    console.log(people[i].id);
-    console.log(user.friends.indexOf(people[i].id) == -1);
-
     if (user.friends.indexOf(people[i].id) === -1) {
-      console.log('here');
+
       possibleFriends.appendChild(friend);
     };
   };
