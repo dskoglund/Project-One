@@ -74,19 +74,33 @@ var people = [
 
 var possibleFriends = document.getElementById('possible-friends');
 var currentFriends = document.getElementById('current-friends');
-
-for (var i = 0; i < people.length; i++) {
-  var friend = makeFriend(people[i]);
-  possibleFriends.appendChild(friend);
-}
-
 var user = person(currentUser);
 
-for (var k = 0; k < user.friends.length; k++) {
-  var friend = person(user.friends[k]);
-  var theFriend = makeFriend(friend);
-  currentFriends.appendChild(theFriend);
+function drawPeople() {
+  for (var i = 0; i < people.length; i++) {
+    var friend = makeFriend(people[i]);
+
+    console.log(people[i].name);
+    console.log(people[i].id);
+    console.log(user.friends.indexOf(people[i].id) == -1);
+
+    if (user.friends.indexOf(people[i].id) === -1) {
+      console.log('here');
+      possibleFriends.appendChild(friend);
+    };
+  };
 }
+
+drawPeople();
+
+function currentFriend() {
+  for (var k = 0; k < user.friends.length; k++) {
+    var friend = person(user.friends[k]);
+    var theFriend = makeFriend(friend);
+    currentFriends.appendChild(theFriend);
+  };
+}
+currentFriend();
 
 function person(id) {
   for (var i = 0; i < people.length; i++) {
@@ -95,13 +109,25 @@ function person(id) {
     }
   }
 }
-var possibleFriends = document.getElementById('possible-friends');
+
+//var possibleFriends = document.getElementById('possible-friends');
 possibleFriends.addEventListener('click', function (theEvent) {
   var id = theEvent.target.getAttribute('data-id');
   if (id) {
-    user.friends.push(id);
+    user.friends.push(parseInt(id));
+    clear(currentFriends);
+    currentFriend(id);
+    clear(possibleFriends);
+    drawPeople();
   }
+
 });
+
+function clear(area) {
+  while(area.firstChild) {
+    area.removeChild(area.firstChild);
+  }
+}
 
 function makeFriend(person) {
   var friend = document.createElement('div');
