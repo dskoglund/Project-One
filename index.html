@@ -4,48 +4,58 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="default.css">
+  <script src="https://use.fontawesome.com/8fde93af38.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
   <meta charset="utf-8">
   <title>Facebook Mockup</title>
 </head>
-<body>
-  <div class="container">
+<body id="body">
+  <div class="col-xs-12">
     <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
+      <div id="nav-background" class="col-xs-12 col-centered">
+        <div  class="">
           <div class="panel-body">
-            <div class="form-group">
-              <label for="">Search</label>
-              <input id="term" class="form-control" type="text">
-            </div>
-            <button id="search" type="button" class="btn btn-default">Go</button>
+
+              <div class="col-md-12">
+                <div class="col-md-1 text-right"><i id= "facebook-icon" class="fa fa-facebook-official icon-2x" aria-hidden="true"></i></div>
+                <input id="term" class="col-md-5" type="text" placeholder="Search by name.">
+                <div class="col-md-3">
+                  <button id="search" type="button" class="btn btn-default"><i class="fa fa-search" aria-hidden="true"></i></button>
+                </div>
+              </div>
+
+
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div id="results" class="col-md-12">
+    <div id="result" class="row">
+      <div id="search-result" class="container" >
+        <div id="result-title" class="col-xs-4">
+        </div>
+        <div id="results" class="center-block" style="max-height: 1200px;overflow-y: scroll;">
+        </div>
       </div>
     </div>
-  </div> 
+  </div>
   <div class="container">
     <div class="row">
-      <div class="col-md-7">
-        <div id="people" class="">
-          <h2>People you may know:</h2>
-          <div>
-            <div class="panel panel-default">
+      <div id="people-list" class="col-xs-7">
+        <div id="people" class="col-xs-12">
+          <h5>People you may know</h5>
+          <div style="max-height: 900px; min-height: 900px; overflow-y: scroll;">
+            <div class="panel">
               <div id="possible-friends" class="panel-body">
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-5">
-        <div id="friends">
-          <h2>Current Friends</h2>
-          <div class="panel panel-default">
-            <div id="current-friends" class="panel-body">
-
+      <div class="col-xs-5">
+        <div id="friends" class="col-xs-12">
+          <h5 id="friends-list" >Current Friends</h5>
+          <div class="" style="max-height: 900px; min-height: 900px; overflow-y: scroll;">
+            <div id="current-friends" >
             </div>
           </div>
         </div>

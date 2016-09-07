@@ -1,0 +1,87 @@
+p{
+  color: #90949c;
+}
+p:before{
+  content:"\f041 \0020";
+  font-family: FontAwesome;
+  font-size: 25px;
+}
+
+#body{
+margin-top: 0;
+margin-left: 0;
+background-color: #e9ebee;
+}
+
+#nav-background{
+  position: fixed;
+  background-color: #3b5998;
+  width: 100%;
+  z-index: 2;
+}
+
+#facebook-icon{
+  color: white;
+  font-size: 30px;
+}
+
+#search-button{
+  background-color: #4267A4;
+  color: white;
+  border-radius: 2px;
+}
+
+#search-button:before{
+  content:"\f055 \0020 \f007 \0020";
+  font-family: FontAwesome;
+}
+
+#search{
+  font-size: 10px;
+}
+
+#search-result{
+  background-color: white;
+  margin-top: 0px;
+  padding-top: 50px;
+  border-style: hidden;
+  margin-bottom: 60px;
+
+}
+#results{
+  padding-top: 0px;
+  margin-bottom: 10px;
+}
+
+#people{
+  background-color: white;
+}
+
+#people-list{
+  margin-top: 0px;
+}
+
+#possible-friends{
+  border-style: hidden;
+}
+
+#button-attribs{
+  background-color: #4267A4;
+  color: white;
+  border-radius: 2px;
+}
+
+#button-attribs:before{
+  content:"\f055 \0020 \f007 \0020";
+  font-family: FontAwesome;
+}
+
+
+#friends{
+  margin-top: px;
+  background-color: white;
+}
+
+#current-friends{
+  border-style: hidden;
+}
