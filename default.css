@@ -7,6 +7,21 @@ p:before{
   font-size: 25px;
 }
 
+#term{
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-style: hidden;
+  height: 30px;
+  margin-right: 0px;
+  padding-right: 0px;
+}
+
+.panel-body{
+  padding:8px;
+}
+
 #body{
 margin-top: 0;
 margin-left: 0;
@@ -14,6 +29,7 @@ background-color: #e9ebee;
 }
 
 #nav-background{
+  padding-left: 0px;
   position: fixed;
   background-color: #3b5998;
   width: 100%;
@@ -22,7 +38,7 @@ background-color: #e9ebee;
 
 #facebook-icon{
   color: white;
-  font-size: 30px;
+  font-size: 35px;
 }
 
 #search-button{
@@ -36,16 +52,65 @@ background-color: #e9ebee;
   font-family: FontAwesome;
 }
 
+#user-profile-btn{
+  background: none;
+  color:white;
+  border: hidden;
+  transition: all 0.3s ease 0s;
+  height:30px;
+  width:75px;
+}
+#user-profile-btn:hover{
+  background:#4267b2;
+}
+#user-profile-btn:after{
+  content:"\0020 \f015";
+  font-family: FontAwesome;
+  font-size: 20px;
+}
+
+#find-people-btn{
+background:none;
+color:white;
+border:hidden;
+transition: all 0.3s ease 0s;
+height:30px;
+width:120px;
+}
+#find-people-btn:hover{
+  background:#4267b2;
+}
+#find-people-btn:after{
+  content:"\0020 \f0ac";
+  font-family: FontAwesome;
+  font-size: 20px;
+
+}
+
 #search{
-  font-size: 10px;
+  text-align: center;
+  font-size: 16px;
+  height:30px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  padding-left: 0px;
+  margin-left: 0px;
+  background-color: #f6f7f9;
+  transition: all 0.3s ease 0s;
+  width:60px;
+}
+#search:hover{
+  background: rgb(233, 235, 238);
+  cursor: hand;
 }
 
 #search-result{
   background-color: white;
-  margin-top: 0px;
-  padding-top: 50px;
+  margin-top: 85px;
+  padding-top: 25px;
   border-style: hidden;
   margin-bottom: 60px;
+
 
 }
 #results{
@@ -53,12 +118,18 @@ background-color: #e9ebee;
   margin-bottom: 10px;
 }
 
+#result-space{
+  z-index: 1;
+}
+
 #people{
   background-color: white;
+  padding-bottom: 30px;
 }
 
 #people-list{
-  margin-top: 0px;
+  margin-top: 70px;
+
 }
 
 #possible-friends{
@@ -76,12 +147,81 @@ background-color: #e9ebee;
   font-family: FontAwesome;
 }
 
+#friends-list{
+  margin-top: 70px;
+}
 
 #friends{
   margin-top: px;
   background-color: white;
+  padding-bottom: 30px;
 }
 
 #current-friends{
   border-style: hidden;
+}
+.row{
+  margin-left:0px;
+  margin-right: 0px;
+}
+#profile-cont[row]{
+  margin-left: 0px;
+}
+
+#profile-top{
+  height: 360px;
+  margin-top: 50px;
+  background-image: url('background.jpg');
+  background-position: center;
+}
+#user-name{
+  display: inline-block;
+  color: white;
+  margin-bottom: 0px;
+  margin-top: 315px;
+  position: absolute;
+  margin-left: 210px;
+  font-weight: 400;
+  font-size: 25px;
+
+}
+#user-picture{
+  z-index: 1;
+  display: block;
+  background-image: url('dave.jpg');
+  height: 200px;
+  width: 200px;
+  border-radius: 2px;
+  background-size:cover;
+  margin-top:200px;
+  margin-left: 20px;
+  border:3px solid;
+  background-color: white;
+  padding: 6px;
+  border-color: white;
+  position: absolute;
+
+}
+
+#profile-nav{
+  width: 100%;
+  text-align: center;
+  background-color: white;
+}
+
+button[type="profile-button"]{
+  color: #365899;
+  border-style: hidden;
+  background-color: white;
+  font-size: 17px;
+  font-weight:bolder;
+  padding: none;
+  transition: all 0.3s ease 0s;
+  height:60px;
+  width: 150px;
+
+}
+
+button[type="profile-button"]:hover{
+  background: rgb(233, 235, 238);
 }

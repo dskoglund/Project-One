@@ -618,10 +618,20 @@ var currentFriends = document.getElementById('current-friends');
 var user = person(currentUser);
 var search = document.getElementById('search');
 
+var profilePicture = document.getElementById('user-picture');
+var profileName = document.getElementById('user-name');
+
+//var friendCount = document.getElementById('friend-count');
+//var count = user.friends.length;
+//console.log(parseInt(count));
+//friendCount.appendChild(count);
+//friendCount.appendChild(parseInt(count));
+
 search.addEventListener('click',function(){
+  swap('search-view', 'result');
   var title = document.getElementById('result-title');
   var titleSlogan = document.createElement('h5');
-  titleSlogan.textContent= "Here are people that match your search.";
+  titleSlogan.textContent = "Here are the people that match your search";
   var divider = document.createElement('hr');
   title.appendChild(titleSlogan);
   title.appendChild(divider);
@@ -629,35 +639,62 @@ search.addEventListener('click',function(){
   var word = term.value;
   var matches = relevant(word, people)
   var results = document.getElementById('results');
-  clears(results);
+  //clear(results);
+
   for (var i = 0; i < matches.length; i++) {
+
     results.appendChild(searchResult(matches[i]));
   }
   var searchAdd = document.getElementById('search-button');
 
-  searchAdd.addEventListener('click', function(theEvent) {
+  results.addEventListener('click', function(theEvent) {
+    swap('search-view','search-result');
     var id = theEvent.target.getAttribute('data-id');
     if (id) {
-      user.friends.push(parseInt(id));
+      user.friends.unshift(parseInt(id));//using unshift vs push to push to front of array
       clear(currentFriends);
       currentFriend(id);
-      clears(title);
-      clears(results);
-      //clears(results);
-
-
+      clear(possibleFriends);
+      drawPeople();
+      //clears(title);
+    //  clears(results);
     };
-});
-});/*
-var searchAdd = document.getElementById('search-button');
 
-searchAdd.addEventListener('click',function(theEvent) {
-  var id = theEvent.target.getAttribute('data-id');
-  if (id) {
-    user.friends.push(parseInt(id));
-    clear(currentFriends);
-    currentFriend(id);
-*/
+
+
+
+  });
+});
+
+var profileButton = document.getElementById('user-profile-btn');
+profileButton.addEventListener('click', function(){
+  swap('view','profile-header');
+});
+var findButton = document.getElementById('find-people-btn');
+findButton.addEventListener('click', function(){
+  swap('view','add-friends');
+});
+
+var timelineButton = document.getElementById('timeline-btn');
+timelineButton.addEventListener('click',function(){
+  swap('pro-content', 'pro-timeline');
+});
+
+var friendsButton = document.getElementById('friends-btn');
+friendsButton.addEventListener('click',function(){
+  swap('pro-content', 'pro-friends');
+});
+
+var photosButton = document.getElementById('photos-btn');
+photosButton.addEventListener('click', function(){
+  swap('pro-content','pro-photos');
+});
+
+var aboutButton = document.getElementById('about-btn');
+aboutButton.addEventListener('click', function(){
+  swap('pro-content','pro-about');
+});
+
 
 function relevant(word, people) {
   var matches = [];
@@ -667,7 +704,7 @@ function relevant(word, people) {
     var person = people[i];
     var name = person.name;
     if(name.toUpperCase().indexOf(word.toUpperCase()) !== -1){
-      matches.push(person);
+      matches.unshift(person);
     }
   }
 
@@ -717,6 +754,7 @@ function searchResult(person){
   row.appendChild(image);
   row.appendChild(details);
   row.appendChild(button);
+
   return friend;
   /*var result = document.getElementById('results')
   var people= document.createElement('div');
@@ -732,16 +770,28 @@ function searchResult(person){
 
 }
 
+
 function clears(target){
   while(target.firstChild){
     target.removeChild(target.firstChild);
   }
 }
 
+function swap(location, next){
+  var current = document.getElementById(location);
+  var active = current.getElementsByClassName('active');
+  active[0].classList.add('hide');
+  active[0].classList.remove('active');
+  var pending = document.getElementById(next);
+  pending.classList.add('active');
+  pending.classList.remove('hide');
+
+};
+
 
 
 function drawPeople() {
-  for (var i = 0; i < people.length; i++) {
+  for (var i = 1; i < people.length; i++) {
     var friend = makePeople(people[i]);
 
     if (user.friends.indexOf(people[i].id) === -1) {
@@ -762,6 +812,9 @@ function currentFriend() {
 }
 currentFriend();
 
+var proTimeline = document.getElementById('pro-timeline');
+
+
 function person(id) {
   for (var i = 0; i < people.length; i++) {
     if (people[i].id == id) {
@@ -774,11 +827,12 @@ function person(id) {
 possibleFriends.addEventListener('click', function (theEvent) {
   var id = theEvent.target.getAttribute('data-id');
   if (id) {
-    user.friends.push(parseInt(id));
+    user.friends.unshift(parseInt(id));
     clear(currentFriends);
     currentFriend(id);
     clear(possibleFriends);
     drawPeople();
+
   }
 
 });
