@@ -225,3 +225,19 @@ button[type="profile-button"]{
 button[type="profile-button"]:hover{
   background: rgb(233, 235, 238);
 }
+
+#timeline-photos{
+  background-color: white;
+  margin-top: 20px;
+}
+
+#timeline-about{
+  background-color: white;
+  margin-top: 20px;
+}
+
+#timeline-friends{
+  background-color: white;
+  margin-top: 20px;
+  
+}
