@@ -5,7 +5,8 @@ var people = [
     name: "Dave Skoglund",
     location: "Mission Viejo",
     image: "dave.jpg",
-    friends: [2,3,4,5,6,7,8,9]
+    friends: [2,3,4,5,6,7,8,9],
+    photos: ['angie.jpg', 'dave.jpg', 'friend.jpg', 'jerry.jpg', 'kevin.jpg', 'kim.jpg','kobe.jpg','riley.jpg','sharon.jpg','skyler.jpg','spinner.jpg']
   },
   {
     id: 2,
@@ -617,15 +618,13 @@ var possibleFriends = document.getElementById('possible-friends');
 var currentFriends = document.getElementById('current-friends');
 var user = person(currentUser);
 var search = document.getElementById('search');
-
+var profileFriends = document.getElementById('timeline-friends');
+var profilePhotos = document.getElementById('timeline-photos');
+var friendsContent= document.getElementById('friends-content');
+var proTimeline = document.getElementById('pro-timeline');
 var profilePicture = document.getElementById('user-picture');
 var profileName = document.getElementById('user-name');
 
-//var friendCount = document.getElementById('friend-count');
-//var count = user.friends.length;
-//console.log(parseInt(count));
-//friendCount.appendChild(count);
-//friendCount.appendChild(parseInt(count));
 
 search.addEventListener('click',function(){
   swap('search-view', 'result');
@@ -638,15 +637,13 @@ search.addEventListener('click',function(){
   var term = document.getElementById('term');
   var word = term.value;
   var matches = relevant(word, people)
+
   var results = document.getElementById('results');
-  //clear(results);
-
   for (var i = 0; i < matches.length; i++) {
-
     results.appendChild(searchResult(matches[i]));
   }
-  var searchAdd = document.getElementById('search-button');
 
+  var searchAdd = document.getElementById('search-button');
   results.addEventListener('click', function(theEvent) {
     swap('search-view','search-result');
     var id = theEvent.target.getAttribute('data-id');
@@ -656,13 +653,11 @@ search.addEventListener('click',function(){
       currentFriend(id);
       clear(possibleFriends);
       drawPeople();
-      //clears(title);
-    //  clears(results);
+      clear(profileFriends);
+      profileFriend();
+      clear(friendsContent);
+      friendContent();
     };
-
-
-
-
   });
 });
 
@@ -695,7 +690,6 @@ aboutButton.addEventListener('click', function(){
   swap('pro-content','pro-about');
 });
 
-
 function relevant(word, people) {
   var matches = [];
 
@@ -707,8 +701,6 @@ function relevant(word, people) {
       matches.unshift(person);
     }
   }
-
-
   return matches;
 }
 
@@ -770,7 +762,6 @@ function searchResult(person){
 
 }
 
-
 function clears(target){
   while(target.firstChild){
     target.removeChild(target.firstChild);
@@ -788,20 +779,47 @@ function swap(location, next){
 
 };
 
-
-
 function drawPeople() {
   for (var i = 1; i < people.length; i++) {
     var friend = makePeople(people[i]);
-
     if (user.friends.indexOf(people[i].id) === -1) {
-
       possibleFriends.appendChild(friend);
     };
   };
 }
-
 drawPeople();
+
+function profileFriend(){
+  for (var k = 0; k < user.friends.length; k++) {
+    var friend = person(user.friends[k]);
+    var theFriend = makeFriend(friend);
+    profileFriends.appendChild(theFriend);
+  };
+}
+profileFriend();
+
+function userPhoto(){
+  for (var i = 0; i < user.photos.length; i++) {
+    var picture = document.createElement('img');
+    picture.setAttribute('src',user.photos[i]);
+    picture.classList.add('img-responsive');
+    var pictureSpace = document.createElement('div');
+    pictureSpace.classList.add('col-md-4');
+    pictureSpace.classList.add('container');
+    pictureSpace.appendChild(picture);
+    profilePhotos.appendChild(pictureSpace);
+  }
+}
+userPhoto(user);
+
+function friendContent(){
+  for (var k = 0; k < user.friends.length; k++) {
+    var friend = person(user.friends[k]);
+    var theFriend = makeFriend(friend);
+    friendsContent.appendChild(theFriend);
+  };
+}
+friendContent();
 
 function currentFriend() {
   for (var k = 0; k < user.friends.length; k++) {
@@ -812,9 +830,6 @@ function currentFriend() {
 }
 currentFriend();
 
-var proTimeline = document.getElementById('pro-timeline');
-
-
 function person(id) {
   for (var i = 0; i < people.length; i++) {
     if (people[i].id == id) {
@@ -823,15 +838,18 @@ function person(id) {
   }
 }
 
-
 possibleFriends.addEventListener('click', function (theEvent) {
   var id = theEvent.target.getAttribute('data-id');
   if (id) {
     user.friends.unshift(parseInt(id));
     clear(currentFriends);
+    clear(profileFriends);
     currentFriend(id);
     clear(possibleFriends);
     drawPeople();
+    profileFriend();
+    clear(friendsContent);
+    friendContent();
 
   }
 

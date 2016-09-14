@@ -239,5 +239,9 @@ button[type="profile-button"]:hover{
 #timeline-friends{
   background-color: white;
   margin-top: 20px;
-  
+}
+
+#friends-content{
+  background-color: white;
+  margin-top: 20px;
 }
