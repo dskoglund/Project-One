@@ -804,7 +804,7 @@ function userPhoto(){
     picture.setAttribute('src',user.photos[i]);
     picture.classList.add('img-responsive');
     var pictureSpace = document.createElement('div');
-    pictureSpace.classList.add('col-md-4');
+    pictureSpace.classList.add('col-xs-6');
     pictureSpace.classList.add('container');
     pictureSpace.appendChild(picture);
     profilePhotos.appendChild(pictureSpace);

@@ -84,9 +84,7 @@ width:120px;
   content:"\0020 \f0ac";
   font-family: FontAwesome;
   font-size: 20px;
-
 }
-
 #search{
   text-align: center;
   font-size: 16px;
@@ -103,71 +101,53 @@ width:120px;
   background: rgb(233, 235, 238);
   cursor: hand;
 }
-
 #search-result{
   background-color: white;
   margin-top: 85px;
   padding-top: 25px;
   border-style: hidden;
   margin-bottom: 60px;
-
-
 }
 #results{
   padding-top: 0px;
   margin-bottom: 10px;
 }
-
 #result-space{
   z-index: 1;
 }
-
 #people{
   background-color: white;
   padding-bottom: 30px;
 }
-
 #people-list{
   margin-top: 70px;
-
 }
-
 #possible-friends{
   border-style: hidden;
 }
-
 #button-attribs{
   background-color: #4267A4;
   color: white;
   border-radius: 2px;
 }
-
 #button-attribs:before{
   content:"\f055 \0020 \f007 \0020";
   font-family: FontAwesome;
 }
-
 #friends-list{
   margin-top: 70px;
 }
-
 #friends{
   margin-top: px;
   background-color: white;
   padding-bottom: 30px;
 }
-
 #current-friends{
   border-style: hidden;
-}
-.row{
-  margin-left:0px;
-  margin-right: 0px;
 }
 #profile-cont[row]{
   margin-left: 0px;
 }
-
 #profile-top{
   height: 360px;
   margin-top: 50px;
@@ -183,7 +163,6 @@ width:120px;
   margin-left: 210px;
   font-weight: 400;
   font-size: 25px;
-
 }
 #user-picture{
   z-index: 1;
@@ -200,15 +179,12 @@ width:120px;
   padding: 6px;
   border-color: white;
   position: absolute;
-
 }
-
 #profile-nav{
   width: 100%;
   text-align: center;
   background-color: white;
 }
-
 button[type="profile-button"]{
   color: #365899;
   border-style: hidden;
@@ -219,28 +195,28 @@ button[type="profile-button"]{
   transition: all 0.3s ease 0s;
   height:60px;
   width: 150px;
-
 }
-
 button[type="profile-button"]:hover{
   background: rgb(233, 235, 238);
 }
-
+#timeline-cont{
+  background-color: white;
+  margin-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
 #timeline-photos{
   background-color: white;
   margin-top: 20px;
 }
-
 #timeline-about{
   background-color: white;
   margin-top: 20px;
 }
-
 #timeline-friends{
   background-color: white;
   margin-top: 20px;
 }
-
 #friends-content{
   background-color: white;
   margin-top: 20px;
